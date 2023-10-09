@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class OptijourneyApplication {
+public class OptiJourneyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OptijourneyApplication.class, args);
+		SpringApplication.run(OptiJourneyApplication.class, args);
 	}
 
 }

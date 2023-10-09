@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Google Map Example</title>
+    </head>
+    <body>
+        <h1>Google Map Example</h1>
+        <iframe
+            width="600"
+            height="450"
+            style="border:0"
+            th:src="@{'https://www.google.com/maps/embed/v1/place?q=San+Francisco&key=' + ${apiKey}}"
+            allowfullscreen>
+        </iframe>
+    </body>
+</html>
