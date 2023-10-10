@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage with Text Fields</title>
+    <script th:src="@{/js/addWaypoints.js}"></script>
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+<body>
+<h1>Homepage</h1>
+<form th:action="@{/submit}" method="post" id="myForm">
+    <label for="origin" th:text="'Origin:'"></label>
+    <input type="text" id="origin" name="origin"><br><br>
+
+    <div id="waypoints">
+<!--        <div th:each="index : ${#numbers.sequence(1, numFields)}">-->
+<!--            <label th:for="'waypoint' + ${index}" th:text="'Waypoint ' + (${index}) + ':'"></label>-->
+<!--            <input type="text" th:id="'waypoint' + ${index}" th:name="'waypoints[${index-1}]'"><br><br>-->
+<!--        </div>-->
+    </div>
+
+    <button type="button" onclick="addWaypoint()">Add Waypoint</button><br><br>
+
+    <label for="destination" th:text="'Destination:'"></label>
+    <input type="text" id="destination" name="destination"><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
