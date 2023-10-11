@@ -1,7 +1,9 @@
 package com.matros.optijourney.controllers;
 
+import com.matros.optijourney.components.JourneyOptimizer;
 import com.matros.optijourney.repositories.JourneyData;
 import com.matros.optijourney.repositories.JourneyDataRepository;
+import com.matros.optijourney.services.GoogleMapsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,9 @@ import java.util.List;
 
 @Controller
 public class HomeController {
+
+    @Autowired
+    private JourneyOptimizer journeyOptimizer;
 
     @Autowired
     private JourneyDataRepository journeyDataRepository;
