@@ -1,5 +1,8 @@
 package com.matros.optijourney.controllers;
 
+import com.matros.optijourney.repositories.JourneyData;
+import com.matros.optijourney.repositories.JourneyDataRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,12 +15,15 @@ import java.util.List;
 @Controller
 public class HomeController {
 
+    @Autowired
+    private JourneyDataRepository journeyDataRepository;
+
     @Value("${googlemaps.apikey}")
     private String apiKey;
 
     @GetMapping("/")
     public String homepage(Model model) {
-        model.addAttribute("numFields", 0);
+        model.addAttribute("numFields", 1);
         model.addAttribute("apiKey", apiKey);
         return "homepage";
     }
@@ -26,12 +32,15 @@ public class HomeController {
     public String submitForm(
             @RequestParam("origin") String origin,
             @RequestParam("destination") String destination,
-            @RequestParam("waypoints") List<String> waypoints,
+            @RequestParam(value = "waypoints", required = false) List<String> waypoints,
             Model model) {
 
-        System.out.println("Origin: " + origin);
-        System.out.println("Destination: " + destination);
-        System.out.println("Waypoints: " + waypoints);
+        JourneyData journeyData = new JourneyData();
+        journeyData.setOrigin(origin);
+        journeyData.setDestination(destination);
+        journeyData.setWaypoints(waypoints);
+
+        journeyDataRepository.save(journeyData);
 
         model.addAttribute("origin", origin);
         model.addAttribute("destination", destination);
