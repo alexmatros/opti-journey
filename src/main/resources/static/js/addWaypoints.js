@@ -1,26 +1,21 @@
 initAutocomplete();
 
 function addWaypoint() {
-    const idx = document.querySelectorAll('input[name^="waypoints"]').length + 1;
+    const count = document.querySelectorAll('input[name^="waypoints"]').length + 1;
     const div = document.createElement('div');
+    div.classList.add('form-group');
 
     const label = document.createElement('label');
-    label.setAttribute('for', 'waypoint' + idx);
-    label.innerText = 'Waypoint ' + idx + ': ';
+    label.setAttribute('for', 'waypoint' + count);
+    label.innerText = 'Waypoint ' + count + ': ';
     div.appendChild(label);
 
     const input = document.createElement('input');
     input.setAttribute('type', 'text');
-    input.setAttribute('id', 'waypoint' + idx);
-    input.setAttribute('name', `waypoints[${idx}]`);
-    input.setAttribute("autocomplete", "off");
+    input.setAttribute('id', 'waypoint' + count);
+    input.setAttribute('name', 'waypoints');
+    input.setAttribute('autocomplete', 'off');
     div.appendChild(input);
-
-    const br1 = document.createElement('br');
-    div.appendChild(br1);
-
-    const br2 = document.createElement('br');
-    div.appendChild(br2);
 
     document.getElementById('waypoints').appendChild(div);
 
@@ -32,7 +27,7 @@ function initAutocomplete() {
     const destinationInput = document.querySelector('input[name="destination"]');
 
     const options = {
-        componentRestrictions: {idxry: ['us', 'ca']} // Restrict to USA and Canada
+        componentRestrictions: {country: ['us', 'ca']}
     };
 
     var autocompleteOrigin = new google.maps.places.Autocomplete(originInput, options);

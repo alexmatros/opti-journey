@@ -37,6 +37,6 @@ public class HomeController {
         model.addAttribute("destination", destination);
         model.addAttribute("waypoints", waypoints);
 
-        return "map";
+        return "redirect:/map";
     }
 }
