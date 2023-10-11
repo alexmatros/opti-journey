@@ -1,14 +1,112 @@
 body {
-    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    font-family: Arial, system-ui;
 }
 
+h1 {
+    text-align: center;
+}
+
+/* Container Styling */
 .container {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 20px auto 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#waypoints {
+/* Form Styling */
+#myForm {
     max-width: 600px;
     margin: 0 auto;
-    text-align: center; /* Center the content within the container */
+    text-align: right;
+}
+
+/* Label:Input Wrapper */
+.form-group {
+    margin-bottom: 10px;
+}
+
+/* Input Textbox Styling */
+input[type="text"][name^="waypoint"],
+input[type="text"][name="origin"],
+input[type="text"][name="destination"] {
+    width: 80%;
+    padding: 8px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"][name^="waypoint"]:hover,
+input[type="text"][name="origin"]:hover,
+input[type="text"][name="destination"]:hover {
+    border-color: #555;
+}
+
+input[type="text"][name^="waypoint"]:focus,
+input[type="text"][name="origin"]:focus,
+input[type="text"][name="destination"]:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+input[type="text"]::placeholder {
+    color: #aaa;
+}
+
+/* Label Styling */
+label {
+    display: inline-block;
+    font-style: oblique;
+    font-weight: bold;
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+label[for="origin"],
+label[for="destination"] {
+    color: #007BFF;
+}
+
+label[for^="waypoint"] {
+    color: #549eff;
+}
+
+/* Button Styling */
+input[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #28a745; /* Purple color */
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #357544; /* Darker shade of purple on hover */
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #7B68EE; /* Purple color */
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #6A5ACD; /* Darker shade of purple on hover */
 }

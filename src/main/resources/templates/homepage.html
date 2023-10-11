@@ -2,29 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Homepage with Text Fields</title>
+    <title>OptiJourney</title>
+    <script async defer th:src="'https://maps.googleapis.com/maps/api/js?key=' + ${apiKey} + '&libraries=places&callback=initAutocomplete'"></script>
     <script th:src="@{/js/addWaypoints.js}"></script>
     <link th:href="@{/css/styles.css}" rel="stylesheet">
 </head>
 <body>
-<h1>Homepage</h1>
-<form th:action="@{/submit}" method="post" id="myForm">
-    <label for="origin" th:text="'Origin:'"></label>
-    <input type="text" id="origin" name="origin"><br><br>
+<div class="container">
+    <h1>OptiJourney</h1>
+    <form th:action="@{/submit}" method="post" id="myForm">
+        <div class="form-group">
+            <label for="origin" th:text="'Origin:'"></label>
+            <input type="text" id="origin" name="origin" autocomplete="off">
+        </div>
 
-    <div id="waypoints">
-<!--        <div th:each="index : ${#numbers.sequence(1, numFields)}">-->
-<!--            <label th:for="'waypoint' + ${index}" th:text="'Waypoint ' + (${index}) + ':'"></label>-->
-<!--            <input type="text" th:id="'waypoint' + ${index}" th:name="'waypoints[${index-1}]'"><br><br>-->
-<!--        </div>-->
-    </div>
+        <div id="waypoints"></div>
 
-    <button type="button" onclick="addWaypoint()">Add Waypoint</button><br><br>
+        <button type="button" onclick="addWaypoint()">Add Waypoint</button><br><br>
 
-    <label for="destination" th:text="'Destination:'"></label>
-    <input type="text" id="destination" name="destination"><br><br>
+        <div class="form-group">
+            <label for="destination" th:text="'Destination:'"></label>
+            <input type="text" id="destination" name="destination" autocomplete="off">
+        </div><br><br>
 
-    <input type="submit" value="Submit">
-</form>
+        <input type="submit" value="Submit">
+    </form>
+</div>
 </body>
 </html>
