@@ -4,8 +4,9 @@ body {
 }
 
 h1 {
-    text-align: center; /* Center the text */
-    margin-bottom: 20px; /* Add some space below the heading */
+    font-size: xxx-large;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 p {
@@ -89,7 +90,7 @@ input[type="submit"] {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
-    background-color: #28a745; /* Purple color */
+    background-color: #28a745; /* Green color */
     color: #fff;
     border-radius: 4px;
     cursor: pointer;
@@ -97,7 +98,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #357544; /* Darker shade of purple on hover */
+    background-color: #357544; /* Darker shade of green on hover */
 }
 
 button {

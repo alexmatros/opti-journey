@@ -4,6 +4,7 @@ import com.matros.optijourney.components.JourneyOptimizer;
 import com.matros.optijourney.repositories.JourneyData;
 import com.matros.optijourney.repositories.JourneyDataRepository;
 import com.matros.optijourney.services.GoogleMapsService;
+import com.matros.optijourney.services.JourneyDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -21,7 +23,7 @@ public class HomeController {
     private JourneyOptimizer journeyOptimizer;
 
     @Autowired
-    private JourneyDataRepository journeyDataRepository;
+    private JourneyDataService journeyDataService;
 
     @Value("${googlemaps.apikey}")
     private String apiKey;
@@ -38,21 +40,14 @@ public class HomeController {
             @RequestParam("origin") String origin,
             @RequestParam("destination") String destination,
             @RequestParam(value = "waypoints", required = false) List<String> waypoints,
-            @RequestParam("toggle") String metric,
-            Model model) {
+            @RequestParam("toggle") String metric) {
 
-        JourneyData journeyData = new JourneyData();
-        journeyData.setOrigin(origin);
-        journeyData.setDestination(destination);
-        journeyData.setWaypoints(waypoints);
-        journeyData.setMetric(metric);
+        List<String> journey = journeyOptimizer.optimizeJourney(metric, origin, waypoints, destination);
+        List<String> orderedWaypoints = journey.subList(1, journey.size() - 1);
 
-        journeyDataRepository.save(journeyData);
-
-        model.addAttribute("origin", origin);
-        model.addAttribute("destination", destination);
-        model.addAttribute("waypoints", waypoints);
-        model.addAttribute("metric", metric);
+        journeyDataService.clearDatabase();
+        JourneyData journeyData = new JourneyData(origin, orderedWaypoints, destination, metric);
+        journeyDataService.saveJourneyData(journeyData);
 
         return "redirect:/map";
     }

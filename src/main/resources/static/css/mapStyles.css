@@ -1,0 +1,49 @@
+body {
+    margin: 0 auto;
+    font-family: Manrope, sans-serif;
+}
+
+h1 {
+    font-size: xxx-large;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Container Styling */
+.container {
+    width: 90vw;
+    margin: 20px auto 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button-container {
+    display: flex; /* This makes the buttons display side by side */
+    justify-content: center; /* This separates the buttons with space in between */
+}
+
+#reset {
+    margin-right: 5px;
+}
+
+#save {
+    margin-left: 5px;
+}
+
+.buttons {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #7B68EE; /* Purple color */
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.buttons:hover {
+    background-color: #6A5ACD; /* Darker shade of purple on hover */
+}

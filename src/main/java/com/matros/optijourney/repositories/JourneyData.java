@@ -16,19 +16,29 @@ public class JourneyData {
     private Long id;
 
     private String origin;
+    private String destination;
 
     @ElementCollection
     private List<String> waypoints;
 
-    private String destination;
-
     private String metric;
+
+    public JourneyData() {}
+
+    public JourneyData(String origin, List<String> waypoints, String destination, String metric) {
+        this.origin = origin;
+        this.waypoints = waypoints;
+        this.destination = destination;
+        this.metric = metric;
+    }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public Long getId() { return id; }
+    public Long getId() {
+        return id;
+    }
 
     public String getOrigin() {
         return origin;
@@ -54,7 +64,11 @@ public class JourneyData {
         this.destination = destination;
     }
 
-    public String getMetric() { return metric; }
+    public String getMetric() {
+        return metric;
+    }
 
-    public void setMetric(String metric) { this.metric = metric; }
+    public void setMetric(String metric) {
+        this.metric = metric;
+    }
 }

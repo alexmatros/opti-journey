@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>Google Map Example</title>
-    </head>
-    <body>
-        <h1>Google Map Example</h1>
-        <iframe
-            width="600"
-            height="450"
-            style="border:0"
-            th:src="@{'https://www.google.com/maps/embed/v1/place?q=San+Francisco&key=' + ${apiKey}}"
-            allowfullscreen>
-        </iframe>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>OptiJourney</title>
+    <script th:src="@{/js/map.js}"></script>
+    <script async defer th:src="'https://maps.googleapis.com/maps/api/js?key=' + ${apiKey} + '&libraries=places&callback=initMap'"></script>
+    <link th:href="@{/css/mapStyles.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h1>OptiJourney</h1>
+    <div id="map" style="width: 90vw; height: 70vh;"></div>
+    <script th:inline="javascript">
+        var origin = [[${origin}]];
+        var destination = [[${destination}]];
+        var waypoints = [[${waypoints}]];
+    </script>
+</div>
+</body>
 </html>

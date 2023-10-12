@@ -38,5 +38,9 @@ function initAutocomplete() {
 }
 
 function setInputAutocomplete(input) {
-    new google.maps.places.Autocomplete(input);
+    const options = {
+        componentRestrictions: {country: ['us', 'ca']}
+    };
+
+    new google.maps.places.Autocomplete(input, options);
 }
