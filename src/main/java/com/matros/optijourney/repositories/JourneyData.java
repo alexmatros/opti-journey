@@ -22,14 +22,16 @@ public class JourneyData {
     private List<String> waypoints;
 
     private String metric;
+    private String mode;
 
     public JourneyData() {}
 
-    public JourneyData(String origin, List<String> waypoints, String destination, String metric) {
+    public JourneyData(String origin, List<String> waypoints, String destination, String metric, String mode) {
         this.origin = origin;
         this.waypoints = waypoints;
         this.destination = destination;
         this.metric = metric;
+        this.mode = mode;
     }
 
     public void setId(Long id) {
@@ -70,5 +72,13 @@ public class JourneyData {
 
     public void setMetric(String metric) {
         this.metric = metric;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
     }
 }

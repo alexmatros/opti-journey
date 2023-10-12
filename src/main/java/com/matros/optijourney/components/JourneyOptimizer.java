@@ -17,11 +17,9 @@ public class JourneyOptimizer {
     @Autowired
     GoogleMapsService googleMapsService;
 
-    public List<String> optimizeJourney(String metric, String origin, List<String> waypoints, String destination) {
+    public List<String> optimizeJourney(String origin, List<String> waypoints, String destination, String metric, String mode) {
         // Build ordered array of points: origin -> waypoints -> destination
         int numPoints = (waypoints != null) ? waypoints.size() + 2 : 2;
-
-        System.out.println(numPoints);
 
         String[] points = new String[numPoints];
         points[0] = origin;
@@ -29,12 +27,13 @@ public class JourneyOptimizer {
         points[numPoints - 1] = destination;
 
         // Build distance matrix with the points
-        int[][] distanceMatrix = buildMatrix(metric, points);
+        int[][] distanceMatrix = buildMatrix(points, metric, mode);
 
         // Get order of "next closest" strategy
         int[] order = nextClosest(distanceMatrix);
         List<String> journey = getJourney(points, order);
 
+        System.out.println(journey.size());
         for (String p : journey) { System.out.println(p); }
 
         return journey;
@@ -89,13 +88,13 @@ public class JourneyOptimizer {
         return false;
     }
 
-    private int[][] buildMatrix(String metric, String[] points) {
+    private int[][] buildMatrix(String[] points, String metric, String mode) {
         // build initial vars
         int numPoints = points.length;
 
         int[][] matrix = new int[numPoints][numPoints];
 
-        DistanceResponseDTO dto = googleMapsService.getDistance(points);
+        DistanceResponseDTO dto = googleMapsService.getDistance(points, mode);
         List<Row> rows = dto.getRows();
 
         boolean toggle = (Objects.equals(metric, "distance"));

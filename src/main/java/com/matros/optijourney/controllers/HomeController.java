@@ -40,13 +40,19 @@ public class HomeController {
             @RequestParam("origin") String origin,
             @RequestParam("destination") String destination,
             @RequestParam(value = "waypoints", required = false) List<String> waypoints,
-            @RequestParam("toggle") String metric) {
+            @RequestParam("toggle") String metric,
+            @RequestParam("mode") String mode) {
 
-        List<String> journey = journeyOptimizer.optimizeJourney(metric, origin, waypoints, destination);
+        mode = mode.toUpperCase();
+        System.out.println(mode);
+
+        for (String w : waypoints) { System.out.println(w); }
+
+        List<String> journey = journeyOptimizer.optimizeJourney(origin, waypoints, destination, metric, mode);
         List<String> orderedWaypoints = journey.subList(1, journey.size() - 1);
 
         journeyDataService.clearDatabase();
-        JourneyData journeyData = new JourneyData(origin, orderedWaypoints, destination, metric);
+        JourneyData journeyData = new JourneyData(origin, orderedWaypoints, destination, metric, mode);
         journeyDataService.saveJourneyData(journeyData);
 
         return "redirect:/map";

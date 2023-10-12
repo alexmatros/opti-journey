@@ -1,4 +1,9 @@
-initAutocomplete();
+init();
+
+function init() {
+    initAutocomplete();
+    initRadioLabels();
+}
 
 function addWaypoint() {
     const count = document.querySelectorAll('input[name^="waypoints"]').length + 1;
@@ -43,4 +48,16 @@ function setInputAutocomplete(input) {
     };
 
     new google.maps.places.Autocomplete(input, options);
+}
+
+function initRadioLabels() {
+    const radioLabels = document.querySelectorAll('.radio-group label');
+
+    radioLabels.forEach(label => {
+        console.log("here");
+        label.addEventListener('click', () => {
+            radioLabels.forEach(label => label.classList.remove('checked'));
+            label.classList.add('checked');
+        });
+    });
 }

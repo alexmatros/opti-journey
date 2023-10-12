@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>OptiJourney</title>
-    <script th:src="@{/js/addWaypoints.js}"></script>
-    <script async defer th:src="'https://maps.googleapis.com/maps/api/js?key=' + ${apiKey} + '&libraries=places&callback=initAutocomplete'"></script>
+    <script th:src="@{/js/homepage.js}"></script>
+    <script async defer th:src="'https://maps.googleapis.com/maps/api/js?key=' + ${apiKey} + '&libraries=places&callback=init'"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link th:href="@{/css/homepageStyles.css}" rel="stylesheet">
 </head>
 <body>
@@ -29,11 +30,41 @@
             <input type="text" id="destination" name="destination" autocomplete="off">
         </div>
 
-        <div class="toggle">
-            <input type="radio" id="radio-one" name="toggle" value="distance" checked/>
-            <label for="radio-one">Distance</label>
-            <input type="radio" id="radio-two" name="toggle" value="duration" />
-            <label for="radio-two">Duration</label>
+        <div class="selections">
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="mode" value="walking">
+                    <span class="material-icons">directions_walk</span>
+                </label>
+
+                <div class="vertical-separator"></div>
+
+                <label>
+                    <input type="radio" name="mode" value="bicycling">
+                    <span class="material-icons">directions_bike</span>
+                </label>
+
+                <div class="vertical-separator"></div>
+
+                <label class="checked">
+                    <input type="radio" name="mode" value="driving">
+                    <span class="material-icons">directions_car</span>
+                </label>
+
+                <div class="vertical-separator"></div>
+
+                <label>
+                    <input type="radio" name="mode" value="transit">
+                    <span class="material-icons">directions_transit</span>
+                </label>
+            </div>
+
+            <div class="toggle">
+                <input type="radio" id="radio-one" name="toggle" value="distance" checked/>
+                <label for="radio-one">Distance</label>
+                <input type="radio" id="radio-two" name="toggle" value="duration" />
+                <label for="radio-two">Duration</label>
+            </div>
         </div>
 
         <input type="submit" value="Navigate">

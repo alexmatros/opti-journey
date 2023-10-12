@@ -26,6 +26,7 @@ public class MapsController {
         model.addAttribute("origin", journeyData.getOrigin());
         model.addAttribute("waypoints", journeyData.getWaypoints());
         model.addAttribute("destination", journeyData.getDestination());
+        model.addAttribute("mode", journeyData.getMode());
 
         return "map";
     }

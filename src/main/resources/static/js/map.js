@@ -18,7 +18,7 @@ function initMap() {
                 stopover: true
             };
         }),
-        travelMode: 'DRIVING'
+        travelMode: mode
     };
 
     directionsService.route(request, function (result, status) {
