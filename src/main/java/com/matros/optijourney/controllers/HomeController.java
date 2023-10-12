@@ -38,18 +38,21 @@ public class HomeController {
             @RequestParam("origin") String origin,
             @RequestParam("destination") String destination,
             @RequestParam(value = "waypoints", required = false) List<String> waypoints,
+            @RequestParam("toggle") String metric,
             Model model) {
 
         JourneyData journeyData = new JourneyData();
         journeyData.setOrigin(origin);
         journeyData.setDestination(destination);
         journeyData.setWaypoints(waypoints);
+        journeyData.setMetric(metric);
 
         journeyDataRepository.save(journeyData);
 
         model.addAttribute("origin", origin);
         model.addAttribute("destination", destination);
         model.addAttribute("waypoints", waypoints);
+        model.addAttribute("metric", metric);
 
         return "redirect:/map";
     }

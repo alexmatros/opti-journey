@@ -22,12 +22,19 @@
 
         <div id="waypoints"></div>
 
-        <button type="button" onclick="addWaypoint()">Add Waypoint</button><br><br>
+        <button type="button" onclick="addWaypoint()">Add Waypoint</button>
 
         <div class="form-group">
             <label for="destination" th:text="'Destination:'"></label>
             <input type="text" id="destination" name="destination" autocomplete="off">
-        </div><br><br>
+        </div>
+
+        <div class="toggle">
+            <input type="radio" id="radio-one" name="toggle" value="distance" checked/>
+            <label for="radio-one">Distance</label>
+            <input type="radio" id="radio-two" name="toggle" value="duration" />
+            <label for="radio-two">Duration</label>
+        </div>
 
         <input type="submit" value="Navigate">
     </form>

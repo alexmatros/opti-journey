@@ -22,13 +22,13 @@ public class JourneyData {
 
     private String destination;
 
+    private String metric;
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
     public String getOrigin() {
         return origin;
@@ -53,4 +53,8 @@ public class JourneyData {
     public void setDestination(String destination) {
         this.destination = destination;
     }
+
+    public String getMetric() { return metric; }
+
+    public void setMetric(String metric) { this.metric = metric; }
 }
