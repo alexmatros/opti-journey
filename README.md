@@ -1,6 +1,6 @@
 # OptiJourney
 
-A SpringBoot web app to solve the travelling salesman problem and optimize your Google Maps journeys. Enter an origin, destination, and any number of waypoints in between. Then, select your mode of transportation and whether to optimize for distance or duration between points. Finally, hit navigate to find the most optimal journey that visits all of the locations specified! 
+A SpringBoot web app to solve the travelling salesman problem and optimize Google Maps journeys. Enter an origin, destination, and any number of waypoints in between. Then, select your mode of transportation and whether to optimize for distance or duration between points. Finally, hit navigate to find the most optimal journey that visits all of the locations specified! 
 
 ## Tech Stack
 
